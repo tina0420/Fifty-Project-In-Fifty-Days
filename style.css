@@ -1,0 +1,23 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+
+
+/* apply this to everything */
+*{
+    box-sizing: border-box;
+    /*center everything */
+    display: flex;
+    /* set the flex direction */
+    flex-direction: column;
+    /* 水平擺中間 */
+    align-items: center;
+    /* 垂直擺中間 */
+    justify-content: center;
+    height: 100vh;
+    /* 不要scroll bars are shown by default */
+    overflow: hidden;
+    margin: 0;
+}
+
+body{
+    font-family: 'Roboto', sans-serif;
+}
