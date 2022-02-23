@@ -1,0 +1,85 @@
+@import url('https://fonts.googleapis.com/css?family=Muli&display=swap');
+
+
+/* apply this to everything */
+* {
+    box-sizing: border-box; 
+}
+
+body{
+    font-family: 'Muli', sans-serif;
+    /*center everything */
+    display: flex;
+
+    /* 水平擺中間 */
+    align-items: center;
+    /* 垂直擺中間 */
+    justify-content: center;
+    height: 100vh;
+    /* 不要scroll bars are shown by default */
+    overflow: hidden;
+    margin: 0;
+}
+
+.container {
+    display: flex;
+    /*直的排列*/
+    /* flex-direction: column; */
+    width: 90vw;
+}
+
+.panel {
+    /* 原-> background-size: auto 100%; */
+    /* 新-> preseve rounded corners on the large screen*/
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    /* 80 viewport heights */
+    height: 80vh;
+    border-radius: 30px;
+    color: #fff;
+    /* when hovering over it, we will have a cursor */
+    /* 滑鼠游標移到圖片上的時候，滑鼠會變成手手 */
+    cursor: pointer;
+    /* 五個照片寬變成一樣了 */
+    flex: 0.5;
+    margin: 10px;
+    position: relative;
+    /* o.7 second for the duration with an ease in effect */
+    /* 用0.7秒從左邊展開到平均的位置 */
+    transition: flex 0.7s ease-in;
+}
+
+.panel h3 {
+    font-size: 24px;
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    margin: 0;
+    /* 一般來說看不到文字敘述 */
+    opacity: 0;
+}
+
+.panel.active {
+    /* 原設定是0 */
+    flex: 5;
+}
+
+.panel.active h3 {
+    opacity: 1;
+    /* 轉換照片時smoother */
+    transition: opacity 0.3s ease-in 0.4s;
+}
+
+@media(max-width: 480px){
+    .container {
+        /* viewport width */
+        width: 100vw;
+    }
+    /* 在比較小的螢幕中，把五頁當中的後面兩張移掉 */
+    .panel:nth-of-type(4), .panel:nth-of-type(5) {
+        display: none;
+    }
+}
+
+
