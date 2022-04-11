@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <!-- <meta http-equiv="X-UA-Compatible" content="IE=edge"> -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Progress Strps</title>
+    
+    <!-- 連結到style.css -->
+    <link rel="stylesheet" href="ProgressSteps.css">
+</head>
+<body>
+    <div class="container">
+        <!-- for progress的container -->
+        <div class="container-progress">
+            <!-- 那條藍藍的線 -->
+            <div class="progress" id="progress"></div>
+
+            <!-- 圈圈的calss,4個圈圈裡面目前只有一個active的 -->
+            <div class="circle active">1</div>
+            <div class="circle">2</div>
+            <div class="circle">3</div>
+            <div class="circle">4</div>
+        </div>
+        <!-- 按鈕設定 -->
+        <!-- disabled -> button會變成不能按,以淺色顯示 -->
+        <button class="button" id="previous" disabled>Previous</button>
+        <button class="button" id="next">Next</button>
+
+    </div>
+
+    <!-- 指定連結到script.js -->
+    <script src="ProgressSteps.js"></script>
+</body>
+</html>

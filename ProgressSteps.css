@@ -1,0 +1,142 @@
+@import url('https://fonts.googleapis.com/css?family=Muli&display=swap');
+
+/* root scope
+:root -> CSS pseudo-class, which represents the <html> element and is identical to the selector html.
+can be used to declare global CSS variables
+EX:
+:root {
+    --main-color: blue;
+    --pane-padding: 5px 20px;
+} */
+
+/* root的可以設定一些global variable,後面就可以直接用var() call那個變數設定 */
+
+:root {
+    /* set the wheels, a line fell and set that it's the line in the buffet line */
+    /* 圈圈的外圍是藍的還是白的 */
+    --line-border-fill: #3498db;
+    --line-border-empty: #e0e0e0; 
+}
+
+
+/* apply this to everything */
+*{
+    box-sizing: border-box;
+    
+}
+
+body{
+    background-color: #f6f7fb;
+    font-family: 'Muli', sans-serif;
+    /*center everything */
+    display: flex;
+    /* set the flex direction */
+    flex-direction: column;
+    /* 水平擺中間 */
+    align-items: center;
+    /* 垂直擺中間 */
+    justify-content: center;
+    height: 100vh;
+    /* 不要scroll bars are shown by default */
+    overflow: hidden;
+    margin: 0;
+}
+
+.container {
+    text-align: center;
+}
+
+.container-progress {
+    /* flex box -> flex row*/
+    display: flex;
+    /* 數字中間有空隔 */
+    justify-content: space-between;
+    /* 這樣就可以擺東西在裡面了 */
+    position: relative;
+    margin-bottom: 30px;
+    max-width: 100%;
+    width: 300px;
+}
+
+.container-progress::before {
+    /* 當使用before,after時要加一個content,不然不會顯示出來 */
+    content: '';
+
+    /* background-color: #e0e0e0; */
+    /* 因為:root有設定好了,所以這裡可以直接call變數 */
+    background-color: var(--line-border-empty);
+    position: absolute;
+    top: 50%;
+    left: 0;
+    height: 4px;
+    /* 因為他是empty line */
+    width: 100%;
+    /* 要在數字的中間 */
+    transform: translateY(-50%);
+    /* 要在圈圈和數字的後面 */
+    z-index: -1;
+
+}
+
+.progress {
+    background-color: var(--line-border-fill);
+    position: absolute;
+    top: 50%;
+    left: 0;
+    height: 4px;
+    width: 0%;
+    /* 要在數字的中間 */
+    transform: translateY(-50%);
+    /* 要在圈圈和數字的後面 */
+    z-index: -1;
+    /* 不是跳下一個而是移動延伸過去 */
+    transition: 0.4s ease;
+}
+
+.circle {
+    background-color: #fff;
+    color: #999;
+    border-radius: 50%;
+    height: 30px;
+    width: 30px;
+    /* 以下3行: 把字放大原的中間 */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 3px solid var(--line-border-empty);
+    /* 圓圈會根據移動變色 */
+    transition: 0.4s ease;
+}
+
+.circle.active {
+    border-color: var(--line-border-fill);
+}
+
+.button {
+    background-color: var(--line-border-fill);
+    color: #fff;
+    border: 0;
+    border-radius: 6px;
+    cursor: pointer;
+    font-family: inherit;
+    padding: 8px 30px;
+    margin: 5px;
+    font-size: 14px;
+}
+
+.button:active {
+    /* 點下去那個button,他會一起動 -> scale it down a little */
+    transform: scale(0.98);
+
+}
+
+.button:focus {
+    outline: 0;
+}
+
+/* 在button disabled(不能按)的情況下 */
+.button:disabled {
+    background-color: var(--line-border-empty);
+    /* 當不能按時,滑鼠移到那個button上時會變成禁止的符號 */
+    cursor: not-allowed;
+}
